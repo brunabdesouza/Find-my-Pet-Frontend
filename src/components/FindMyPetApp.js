@@ -14,8 +14,8 @@ class FindMyPetApp extends React.Component {
       <div>
         <NavBar />
         <Router>
-          <Route path="/search" component={MainSearch} />
-          <Route exact path="/results/:animalType/:location" component={SearchShow} />
+          <Route  component={MainSearch} />
+          <Route exact path="/shelters/search/:location/:animal_type/:radius" component={SearchShow} />
         </Router>
       </div>
     )

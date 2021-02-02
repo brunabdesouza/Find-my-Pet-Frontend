@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 // import axios from 'axios';
 // import { HashRouter as Router, Link, Route } from 'react-router-dom';
 
@@ -8,11 +9,12 @@ const MainSearch = (props) => {
 
   const [aTypeSearch, setATypeSearch] = useState( '' );
   const [locationSearch, setLocationSearch] = useState( '' );
+  const [radiusSearch, setRadiusSearch] = useState( '5' );
 
 
   return (
     <div>
-      <form>
+      <form className="main-form">
         <label>Animal: </label>
         <input
           type="text"
@@ -20,13 +22,19 @@ const MainSearch = (props) => {
           onChange={ (ev) => setATypeSearch(ev.target.value)}
           >
         </input>
-        <label>Location: </label>
+        <label>My Location: </label>
         <input
           type="text"
-          placeholder="near me"
+          placeholder="Ryde"
           onChange={ (ev) => setLocationSearch(ev.target.value)}>
         </input>
-        <button onClick={() => props.history.push(`/results/${aTypeSearch}/${locationSearch}`)}>Search</button>
+        <select className="select-option" onChange={ (ev) => setRadiusSearch(ev.target.value)}>
+          <option value="5">5km</option>
+          <option value="10">10km</option>
+          <option value="15">15km</option>
+          <option value="20">20km</option>
+        </select>
+        <button onClick={() => props.history.push(`/shelters/search/${locationSearch}/${aTypeSearch}/${radiusSearch}`)}>Search</button>
       </form>
     </div>
   ) // return

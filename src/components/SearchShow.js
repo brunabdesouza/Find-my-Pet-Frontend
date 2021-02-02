@@ -1,25 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const SHELTER_BASE_URL = 'http://localhost:3000';
+const SEARCH_BASE_URL = 'http://localhost:3000';
 
 const SearchShow = (props) => {
 
-  const [shelter, setShelter] = useState( {} );
+  const [shelters, setShelters] = useState( [] );
 
-  axios.get(`${SHELTER_BASE_URL}/results`, { params: {
-    animalType: props.match.params.animalType,
-    location: props.match.params.location, radius: props.match.params.radius}
-  })
-  .then( (res) => {
-    console.log(res.data);
-  })
-  .catch( console.warn );
+  const { location, animal_type, radius } = props.match.params
 
+  useEffect( () => {
+
+    axios.get(`${SEARCH_BASE_URL}/shelters/search`, {
+      params: { location, animal_type, radius }
+    })
+    .then( (res) => {
+      console.log(res.data);
+      setShelters(res.data)
+    })
+    .catch( console.warn );
+
+}, [location, animal_type, radius]); // useEffect
 
   return (
     <div>
-      Found Something!
+      
+      <ul className="allSearchDisplay">
+        {
+          shelters.map( s => (
+            <li className="searchDisplay" key={s.id}><strong>{s.name}</strong>
+            <img src={s.pet_image} alt="pet"/>
+            <li><strong>{s.pet_name}</strong></li>
+            <li className="myFontSize">{s.pet_description}</li>
+            </li>
+          ))
+        }
+      </ul>
+
     </div>
 
   ) // return
@@ -43,19 +60,7 @@ const SearchShow = (props) => {
 // render(){
 //   return (
 //     <div>
-//       <h2>
-//         Search results for: {this.props.match.params.name}
-//       </h2>
-//         <ul>
-//           {
-//             this.state.search.map( s => (
-//               <li key={s.id}>{s.name}
-//               <li>{s.address}</li>
-//               <li>{s.description}</li>
-//               </li>
-//             ))
-//           }
-//         </ul>
+//
 //     </div>
 //   )
 // }; // render
