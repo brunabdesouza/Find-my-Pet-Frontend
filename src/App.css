@@ -242,6 +242,7 @@ li {
 
 .allSearchDisplay {
   display: flex;
+  flex-wrap: wrap;
   padding: 15px 15px 15px 15px;
   justify-content: space-between;
 }

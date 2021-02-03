@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import '../App.css';
-import Dropdown from './Dropdown';
+
 
 const NavBar = () => {
 
   const [click, setClick] = useState(false);
 
-  const [dropdown, setDropdown] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
 
   const closeMenuBar = () => setClick(false);
 
-  const onMouseEnter = () => {
-    if(window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if(window.innerWidth > 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
+  // const onMouseEnter = () => {
+  //   if(window.innerWidth < 960) {
+  //     setDropdown(false);
+  //   } else {
+  //     setDropdown(true);
+  //   }
+  // };
+  //
+  // const onMouseLeave = () => {
+  //   if(window.innerWidth > 960) {
+  //     setDropdown(false);
+  //   } else {
+  //     setDropdown(false);
+  //   }
+  // };
 
     return (
       <div>
@@ -50,12 +50,7 @@ const NavBar = () => {
                   Shelters
                 </Link>
               </li>
-              <li
-                className="nav-item"
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-                >
-                {dropdown && <Dropdown />}
+              <li className="nav-item">
                 <Link to="/pets" className="nav-links" onClick={closeMenuBar}>
                   Pets <i className='fas fa-caret-down' />
                 </Link>
@@ -65,6 +60,21 @@ const NavBar = () => {
                   Sign Up
                 </Link>
               </li>
+              {
+                props.currentUser !== undefined
+                ?
+                <>
+                (
+                  <li>Welcome {props.currentUser.name}</li>
+                  <li className="nav-item"><Link to="/userProfile"></Link></li>
+                  <li><Link onClick={handleLogout} to="/"></Link></li>
+                )
+                </>
+                :
+                (
+                  <li><Link to="/login"></Link></li>
+                )
+              }
             </ul>
           </Router>
         </nav>

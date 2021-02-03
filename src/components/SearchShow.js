@@ -15,7 +15,7 @@ const SearchShow = (props) => {
       params: { location, animal_type, radius }
     })
     .then( (res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setShelters(res.data)
     })
     .catch( console.warn );
@@ -24,7 +24,7 @@ const SearchShow = (props) => {
 
   return (
     <div>
-      
+
       <ul className="allSearchDisplay">
         {
           shelters.map( s => (
