@@ -34,7 +34,6 @@ const FindMyPetApp = () => {
       setCurrentUser({ currentUser: undefined })
       localStorage.removeItem("jwt");
       axios.defaults.headers.common['Authorization'] = undefined;
-
     }; // handleLogout
 
     return (
@@ -54,4 +53,4 @@ const FindMyPetApp = () => {
 
 }; // class FindMyPetApp
 
-export default FindMyPetApp
+export default FindMyPetApp;

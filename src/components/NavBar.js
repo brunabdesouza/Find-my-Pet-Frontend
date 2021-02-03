@@ -3,7 +3,7 @@ import { HashRouter as Router, Link } from 'react-router-dom';
 import '../App.css';
 
 
-const NavBar = () => {
+const NavBar = (props) => {
 
   const [click, setClick] = useState(false);
 
@@ -61,13 +61,13 @@ const NavBar = () => {
                 </Link>
               </li>
               {
-                props.currentUser !== undefined
+                props.user !== undefined
                 ?
                 <>
                 (
-                  <li>Welcome {props.currentUser.name}</li>
+                  <li>Welcome {props.user.name}</li>
                   <li className="nav-item"><Link to="/userProfile"></Link></li>
-                  <li><Link onClick={handleLogout} to="/"></Link></li>
+                  <li><span onClick={props.handleLogout}></span></li>
                 )
                 </>
                 :
