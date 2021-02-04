@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Route, Link, HashRouter as Router} from 'react-router-dom';
+// import { Route, Link, HashRouter as Router} from 'react-router-dom';
 
 const USER_BASE_URL = 'http://localhost:3000';
 
@@ -16,8 +16,8 @@ const Login = (props) => {
     axios.post(`${USER_BASE_URL}/user_token`, {auth: request})
     .then( (res) => {
       localStorage.setItem("jwt", res.data.jwt)
-      axios.defaults.headers.common['Authorization'] = 'Bearer' + res.data.jwt
-      console.log('user', res.data);
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.jwt
+      // console.log('user', res.data);
       props.history.push(`/pets`)
     })
     .catch( console.warn );

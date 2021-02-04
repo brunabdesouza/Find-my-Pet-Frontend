@@ -7,27 +7,10 @@ const NavBar = (props) => {
 
   const [click, setClick] = useState(false);
 
-  // const [dropdown, setDropdown] = useState(false);
-
   const handleClick = () => setClick(!click);
 
   const closeMenuBar = () => setClick(false);
 
-  // const onMouseEnter = () => {
-  //   if(window.innerWidth < 960) {
-  //     setDropdown(false);
-  //   } else {
-  //     setDropdown(true);
-  //   }
-  // };
-  //
-  // const onMouseLeave = () => {
-  //   if(window.innerWidth > 960) {
-  //     setDropdown(false);
-  //   } else {
-  //     setDropdown(false);
-  //   }
-  // };
 
     return (
       <div>
@@ -52,27 +35,34 @@ const NavBar = (props) => {
               </li>
               <li className="nav-item">
                 <Link to="/pets" className="nav-links" onClick={closeMenuBar}>
-                  Pets <i className='fas fa-caret-down' />
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/signup" className="nav-links" onClick={closeMenuBar}>
-                  Sign Up
+                  Pets
                 </Link>
               </li>
               {
+                <>
+
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-links" onClick={closeMenuBar}>
+                    Sign Up
+                  </Link>
+                </li>
+                </>
+              }
+              {
                 props.user !== undefined
                 ?
-                <>
                 (
-                  <li>Welcome {props.user.name}</li>
-                  <li className="nav-item"><Link to="/userProfile"></Link></li>
-                  <li><span onClick={props.handleLogout}></span></li>
+                  <>
+                  <li className="nav-item welcome-links">Welcome, {props.user.name}</li>
+                  <li><Link to="/userProfile" className="nav-links"></Link></li>
+                  <li className="nav-item"><Link to="/"
+                    className="nav-links"
+                     onClick={props.handleLogout}>Logout</Link></li>
+                  </>
                 )
-                </>
                 :
                 (
-                  <li><Link to="/login"></Link></li>
+                  <li className="nav-item"><Link to="/login"></Link></li>
                 )
               }
             </ul>
@@ -81,7 +71,6 @@ const NavBar = (props) => {
       </div>
 
     )// return
-
 
 } // const NavBar
 
