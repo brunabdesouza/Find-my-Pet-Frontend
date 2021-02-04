@@ -26,7 +26,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <form className="userForm">
+      <form className="main-form">
         <label>Email: </label>
         <input
           type="text"

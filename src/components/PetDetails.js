@@ -12,7 +12,7 @@ useEffect( () => {
 
   axios.get(`${PETSHOW_BASE_URL}/pets/${props.match.params.id}`)
   .then( (res) => {
-    console.log('pets', res.data );
+    // console.log('pets', res.data );
     setPetInfo(res.data);
   })
   .catch( console.warn);
@@ -21,8 +21,8 @@ useEffect( () => {
 
 
   return (
-    <div>
-      <ul>
+    <div className="cards">
+      <ul className="card">
         <span>Name: </span>
         <li>{petInfo.name}</li>
         <img src={petInfo.image} alt="pet"/>
@@ -42,9 +42,3 @@ useEffect( () => {
 }; // PetDetails
 
 export default PetDetails;
-
-
-// <li>{p.adoption_fee}</li>
-// <li>{p.desexed}</li>
-// <li>{p.vaccinated}</li>
-// <li>{p.wormed}</li>

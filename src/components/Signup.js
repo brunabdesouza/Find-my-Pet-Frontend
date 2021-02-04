@@ -13,12 +13,10 @@ const Signup = (props) => {
 
   const handleSubmit = (ev) => {
 
-    const request = { 'username': userName, 'email': userEmail, 'password': userPassword, 'confirm password': userConfPassword, 'user': userType};
+    const request = { 'name': userName, 'email': userEmail, 'password': userPassword, 'password_confirmation': userConfPassword, 'user_type': userType};
 
-    axios.post(`${SIGNUP_BASE_URL}/users`, {auth: request})
+    axios.post(`${SIGNUP_BASE_URL}/users`, {user: request})
     .then( (res) => {
-      localStorage.setItem("jwt", res.data.jwt)
-      axios.default.headers.common['Authorization'] = 'Bearer ' + res.data.jwt
       console.log('new user', res.data);
       props.history.push(`/pets`)
     })
@@ -31,10 +29,10 @@ const Signup = (props) => {
 
   return (
     <div>
-      <form className="signupForm">
+      <form className="main-form">
         <select className="select-option" onChange={ (ev) => setUserType(ev.target.value)}>
-          <option value="user_type">user</option>
-          <option value="user_type">shelter</option>
+          <option value="user">user</option>
+          <option value="shelter">shelter</option>
         </select>
         <label>Name: </label>
         <input

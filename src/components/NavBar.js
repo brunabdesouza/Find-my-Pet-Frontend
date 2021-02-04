@@ -20,7 +20,7 @@ const NavBar = (props) => {
               Find my Pet
             </Link>
             <div className="menu-icon" onClick={handleClick}>
-              <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+            <ul className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className="nav-item">
@@ -38,23 +38,23 @@ const NavBar = (props) => {
                   Pets
                 </Link>
               </li>
-              {
-                <>
-
                 <li className="nav-item">
-                  <Link to="/signup" className="nav-links" onClick={closeMenuBar}>
+                  <Link to="/users" className="nav-links" onClick={closeMenuBar}>
                     Sign Up
                   </Link>
                 </li>
-                </>
-              }
+                <li className="nav-item">
+                  <Link to="/user_token" className="nav-links" onClick={closeMenuBar}>
+                    Login
+                  </Link>
+                </li>
               {
                 props.user !== undefined
                 ?
                 (
                   <>
                   <li className="nav-item welcome-links">Welcome, {props.user.name}</li>
-                  <li><Link to="/userProfile" className="nav-links"></Link></li>
+                  <li><Link to="/pets" className="nav-links"></Link></li>
                   <li className="nav-item"><Link to="/"
                     className="nav-links"
                      onClick={props.handleLogout}>Logout</Link></li>
@@ -62,7 +62,7 @@ const NavBar = (props) => {
                 )
                 :
                 (
-                  <li className="nav-item"><Link to="/login"></Link></li>
+                  <li className="nav-item"><Link to="/user_token"></Link></li>
                 )
               }
             </ul>

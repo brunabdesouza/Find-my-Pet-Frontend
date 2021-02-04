@@ -61,7 +61,7 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(8, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -193,10 +193,13 @@
   display: flex;
   flex-flow: wrap;
   align-items: center;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  justify-content: center !important;
 }
 
 .main-form label {
-  margin: 5px, 10px, 5px, 0;
+  margin: 5px, 15px, 5px, 0;
 }
 
 .main-form input {
@@ -222,7 +225,7 @@
   color: white;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .main-form input {
     margin: 10px 0;
   }
@@ -231,8 +234,7 @@
     flex-direction: column;
     align-items: stretch;
   }
-}
-
+} */
 img {
   max-width: 300px;
   max-height: 200px;
@@ -244,18 +246,33 @@ li {
 
 .myFontSize {
   font-size: 15px;
+  line-height: 1.5;
+  padding: 15px;
+  background: #fafafa;
 }
 
-.allSearchDisplay {
+.cards {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  padding: 15px 15px 15px 15px;
-  justify-content: space-between;
+  border: 1px solid #CAD0D2;
+  border-radius: 4px;
+  align-content: space-between;
+  justify-content: space-evenly;
+  overflow: hidden;
+  /* align-items: stretch;
+  margin: 0 auto;
+  max-width: 90%;
+  display: grid;
+  grid-template-columns: fit-content(300px) fit-content(300px);
+  gap: 20px; */
 }
 
-.searchDisplay {
+.card {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex: 0 1 calc(25% - 1em);
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
 }

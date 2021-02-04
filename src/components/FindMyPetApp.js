@@ -50,7 +50,7 @@ const FindMyPetApp = () => {
           <Route exact path="/users/current" component={UserProfile} />
           <Route exact path="/shelters/search/:location/:animal_type/:radius" component={SearchShow} />
           <Route exact path="/shelters" component={SheltersIndex} />
-          <Route exact path="/shelters/:id" components={ShelterDetail} />
+          <Route exact path="/shelters/:id" component={ShelterDetail} />
           <Route exact path="/pets" component={PetsIndex} />
           <Route exact path="/pets/:id" component={PetDetails} />
         </Router>

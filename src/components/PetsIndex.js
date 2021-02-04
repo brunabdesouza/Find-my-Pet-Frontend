@@ -21,16 +21,18 @@ const PetsIndex = (props) => {
 
   return (
     <div>
-      <ul className="allSearchDisplay">
+      <ul className="cards">
         {
           petsIndex.map( p => (
             <li
-              className="searchDisplay"
               key={p.id}
-              onClick={ () => props.history.push(`/pets/${p.id}`)}
-            ><strong>{p.name}</strong>
+              className="card"
+              onClick={ () => props.history.push(`/pets/${p.id}`)}>
             <img src={p.image} alt="pet"/>
+            <strong>{p.name}</strong>
+              Age:
             <li>{p.age}</li>
+              Sex:
             <li>{p.sex}</li>
             <li className="myFontSize">{p.description}</li>
             </li>

@@ -12,14 +12,22 @@ const ShelterDetail = (props) => {
     axios.get(`${SHELTERSHOW_BASE_URL}/shelters/${props.match.params.id}`)
     .then( (res) => {
       console.log('shelter', res.data);
+      setShelterInfo(res.data);
     })
     .catch( console.warn );
 
-  }, [])
+  }, [props.match.params.id]); // useEffect
 
   return (
-    <div>
-
+    <div className="cards">
+      <ul className="card">
+        <span>Name: </span>
+        <li>{shelterInfo.name}</li>
+        <span>Address: </span>
+        <li>{shelterInfo.address}</li>
+        <span>Description: </span>
+        <li className="myFontSize">{shelterInfo.description}</li>
+      </ul>
     </div>
   )
 
