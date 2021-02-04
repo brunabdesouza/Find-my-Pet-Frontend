@@ -16,13 +16,13 @@ const NavBar = (props) => {
       <div>
         <nav className="navbar">
           <Router>
-            <Link to="/" className="navbar-logo">
+            <div className="navbar-logo">
               Find my Pet
-            </Link>
+            </div>
             <div className="menu-icon" onClick={handleClick}>
             <ul className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <ul className={click ? 'nav-menu active' : 'nav-menu'} >
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMenuBar}>
                   Home
@@ -44,7 +44,7 @@ const NavBar = (props) => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/user_token" className="nav-links" onClick={closeMenuBar}>
+                  <Link to="/login" className="nav-links" onClick={closeMenuBar}>
                     Login
                   </Link>
                 </li>
@@ -62,7 +62,7 @@ const NavBar = (props) => {
                 )
                 :
                 (
-                  <li className="nav-item"><Link to="/user_token"></Link></li>
+                  <li className="nav-item"><Link to="/login"></Link></li>
                 )
               }
             </ul>

@@ -18,18 +18,24 @@ const FindMyPetApp = () => {
 
   const [currentUser, setCurrentUser] = useState(undefined);
 
+  const getUser = () => {
+
+    axios.get(`${USER_BASE_URL}/users/current`,)
+    .then( (res) => {
+      // console.log('User', res.data);
+      setCurrentUser(res.data);
+    })
+    .catch( console.warn);
+
+  }; // getUser
+
     useEffect( () => {
       let jwt = localStorage.getItem("jwt");
       if (jwt){
         let token = "Bearer " + jwt;
 
         axios.defaults.headers.common['Authorization'] = token;
-        axios.get(`${USER_BASE_URL}/users/current`,)
-        .then( (res) => {
-          // console.log('User', res.data);
-          setCurrentUser(res.data);
-        })
-        .catch( console.warn);
+        getUser();
       }
     }, []); // useEffect
 
@@ -45,7 +51,7 @@ const FindMyPetApp = () => {
         <Router>
           <Route  render={ (props) => <NavBar user={ currentUser } handleLogout={ handleLogout } {...props} />} />
           <Route  component={MainSearch} />
-          <Route exact path="/user_token" component={Login} />
+          <Route exact path="/login" render={ (props) => <Login getUser={ getUser } {...props} /> } />
           <Route exact path="/users" component={Signup} />
           <Route exact path="/users/current" component={UserProfile} />
           <Route exact path="/shelters/search/:location/:animal_type/:radius" component={SearchShow} />

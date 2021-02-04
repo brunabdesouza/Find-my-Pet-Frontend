@@ -11,6 +11,7 @@ const Login = (props) => {
 
   const handleSubmit = (ev) => {
 
+    ev.preventDefault();
     const request = { 'email': userEmail, 'password': userPassword };
 
     axios.post(`${USER_BASE_URL}/user_token`, {auth: request})
@@ -18,6 +19,7 @@ const Login = (props) => {
       localStorage.setItem("jwt", res.data.jwt)
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.jwt
       // console.log('user', res.data);
+      props.getUser()
       props.history.push(`/pets`)
     })
     .catch( console.warn );
