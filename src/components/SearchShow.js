@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 
-const SEARCH_BASE_URL = 'http://localhost:3000';
+// const SEARCH_BASE_URL = 'http://localhost:3000';
 
 const SearchShow = (props) => {
 
@@ -11,7 +12,7 @@ const SearchShow = (props) => {
 
   useEffect( () => {
 
-    axios.get(`${SEARCH_BASE_URL}/shelters/search`, {
+    axios.get(`${config.url.API_URL}/shelters/search`, {
       params: { location, animal_type, radius }
     })
     .then( (res) => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 
 const SIGNUP_BASE_URL = 'http://localhost:3000';
 
@@ -15,7 +16,7 @@ const Signup = (props) => {
 
     const request = { 'name': userName, 'email': userEmail, 'password': userPassword, 'password_confirmation': userConfPassword, 'user_type': userType};
 
-    axios.post(`${SIGNUP_BASE_URL}/users`, {user: request})
+    axios.post(`${config.url.API_URL}/users`, {user: request})
     .then( (res) => {
       console.log('new user', res.data);
       props.history.push(`/pets`)

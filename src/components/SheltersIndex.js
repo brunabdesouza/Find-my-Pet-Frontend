@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 
-const SEARCH_BASE_URL = 'http://localhost:3000';
+// const SEARCH_BASE_URL = 'http://localhost:3000';
 
 const SheltersIndex = (props) => {
 
@@ -10,7 +11,7 @@ const SheltersIndex = (props) => {
 
   useEffect( () => {
 
-    axios.get(`${SEARCH_BASE_URL}/shelters`)
+    axios.get(`${config.url.API_URL}/shelters`)
     .then( (res) => {
       setAllSheltersIndex(res.data)
     })

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 
-const PETSHOW_BASE_URL = 'http://localhost:3000';
+// const PETSHOW_BASE_URL = 'http://localhost:3000';
 
 const PetDetails = (props) => {
 
@@ -10,7 +11,7 @@ const [petInfo, setPetInfo] = useState( {} );
 
 useEffect( () => {
 
-  axios.get(`${PETSHOW_BASE_URL}/pets/${props.match.params.id}`)
+  axios.get(`${config.url.API_URL}/pets/${props.match.params.id}`)
   .then( (res) => {
     // console.log('pets', res.data );
     setPetInfo(res.data);

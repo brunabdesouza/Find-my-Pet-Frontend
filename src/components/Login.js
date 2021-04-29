@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 // import { Route, Link, HashRouter as Router} from 'react-router-dom';
 
-const USER_BASE_URL = 'http://localhost:3000';
+// const USER_BASE_URL = 'http://localhost:3000';
 
 const Login = (props) => {
 
@@ -14,7 +15,7 @@ const Login = (props) => {
     ev.preventDefault();
     const request = { 'email': userEmail, 'password': userPassword };
 
-    axios.post(`${USER_BASE_URL}/user_token`, {auth: request})
+    axios.post(`${config.url.API_URL}/user_token`, {auth: request})
     .then( (res) => {
       localStorage.setItem("jwt", res.data.jwt)
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.jwt

@@ -11,8 +11,9 @@ import Signup from './Signup';
 import UserProfile from './UserProfile';
 import axios from 'axios';
 import {Route, /*Link*/ HashRouter as Router} from 'react-router-dom';
+import { config } from './Constants';
 
-const USER_BASE_URL = 'http://localhost:3000';
+// const USER_BASE_URL = 'http://localhost:3000';
 
 const FindMyPetApp = () => {
 
@@ -20,7 +21,7 @@ const FindMyPetApp = () => {
 
   const getUser = () => {
 
-    axios.get(`${USER_BASE_URL}/users/current`,)
+    axios.get(`${config.url.API_URL}/users/current`,)
     .then( (res) => {
       // console.log('User', res.data);
       setCurrentUser(res.data);

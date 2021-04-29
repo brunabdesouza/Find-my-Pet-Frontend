@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 // import { Link } from 'react-router-dom';
 
-const SEARCH_BASE_URL = 'http://localhost:3000';
+// const SEARCH_BASE_URL = 'http://localhost:3000';
 
 const PetsIndex = (props) => {
 
@@ -10,7 +11,7 @@ const PetsIndex = (props) => {
 
   useEffect( () => {
 
-  axios.get(`${SEARCH_BASE_URL}/pets`)
+  axios.get(`${config.url.API_URL}/pets`)
   .then( (res) => {
     // console.log('data', res.data);
     setPetsIndex(res.data)

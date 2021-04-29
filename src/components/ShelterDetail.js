@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { config } from './Constants';
 
-const SHELTERSHOW_BASE_URL = 'http://localhost:3000';
+// const SHELTERSHOW_BASE_URL = 'http://localhost:3000';
 
 const ShelterDetail = (props) => {
 
@@ -9,7 +10,7 @@ const ShelterDetail = (props) => {
 
   useEffect( () => {
 
-    axios.get(`${SHELTERSHOW_BASE_URL}/shelters/${props.match.params.id}`)
+    axios.get(`${config.url.API_URL}/shelters/${props.match.params.id}`)
     .then( (res) => {
       console.log('shelter', res.data);
       setShelterInfo(res.data);
